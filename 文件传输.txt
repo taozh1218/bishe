@@ -30,5 +30,8 @@ AndroidœµÕ≥º‹ππ
 https://hit-alibaba.github.io/interview/Android/basic/Android-Arch.html
 http://blog.csdn.net/lcore/article/details/20993367
 
+MVC
+https://zh.wikipedia.org/wiki/MVC
+
 android oom
-http://hukai.me/android-performance-oom/
+http://www.imooc.com/article/12915
