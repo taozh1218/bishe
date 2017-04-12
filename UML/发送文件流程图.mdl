@@ -50,10 +50,70 @@
 		    type       	"StartState")
 		(object State "选择我要接收"
 		    quid       	"58EDCC880030"
-		    type       	"Normal"))
+		    type       	"Normal")
+		(object State "打开录音，录制并解析声波"
+		    quid       	"58EDCCB70042"
+		    type       	"Normal")
+		(object State "利用声波中的ip，连接server"
+		    quid       	"58EDCCD4011B"
+		    type       	"Normal")
+		(object State "读取文件流，并写入本地"
+		    quid       	"58EDCCF200DA"
+		    type       	"Normal")
+		(object State "$UNNAMED$1"
+		    quid       	"58EDCD1D0270"
+		    type       	"EndState"))
 	    partitions 	(list Partitions)
 	    objects    	(list Objects)
-	    transitions 	(list transition_list)
+	    transitions 	(list transition_list
+		(object State_Transition
+		    quid       	"58EDCCB201EB"
+		    supplier   	"Use Case View::State/Activity Model::选择我要接收"
+		    supplier_quidu 	"58EDCC880030"
+		    client     	"$UNNAMED$0"
+		    client_quidu 	"58EDCC850314"
+		    sendEvent  	(object sendEvent
+			quid       	"58EDCCB201EE"))
+		(object State_Transition
+		    quid       	"58EDCCD103BE"
+		    supplier   	"Use Case View::State/Activity Model::打开录音，录制并解析声波"
+		    supplier_quidu 	"58EDCCB70042"
+		    client     	"Use Case View::State/Activity Model::选择我要接收"
+		    client_quidu 	"58EDCC880030"
+		    sendEvent  	(object sendEvent
+			quid       	"58EDCCD103C1"))
+		(object State_Transition
+		    quid       	"58EDCCEB000B"
+		    supplier   	"Use Case View::State/Activity Model::利用声波中的ip，连接server"
+		    supplier_quidu 	"58EDCCD4011B"
+		    client     	"Use Case View::State/Activity Model::打开录音，录制并解析声波"
+		    client_quidu 	"58EDCCB70042"
+		    sendEvent  	(object sendEvent
+			quid       	"58EDCCEB000E"))
+		(object State_Transition
+		    quid       	"58EDCD12039A"
+		    supplier   	"Use Case View::State/Activity Model::利用声波中的ip，连接server"
+		    supplier_quidu 	"58EDCCD4011B"
+		    client     	"Use Case View::State/Activity Model::利用声波中的ip，连接server"
+		    client_quidu 	"58EDCCD4011B"
+		    sendEvent  	(object sendEvent
+			quid       	"58EDCD12039D"))
+		(object State_Transition
+		    quid       	"58EDCD1900F5"
+		    supplier   	"Use Case View::State/Activity Model::读取文件流，并写入本地"
+		    supplier_quidu 	"58EDCCF200DA"
+		    client     	"Use Case View::State/Activity Model::利用声波中的ip，连接server"
+		    client_quidu 	"58EDCCD4011B"
+		    sendEvent  	(object sendEvent
+			quid       	"58EDCD1900F8"))
+		(object State_Transition
+		    quid       	"58EDCD21023D"
+		    supplier   	"$UNNAMED$1"
+		    supplier_quidu 	"58EDCD1D0270"
+		    client     	"Use Case View::State/Activity Model::读取文件流，并写入本地"
+		    client_quidu 	"58EDCCF200DA"
+		    sendEvent  	(object sendEvent
+			quid       	"58EDCD210240")))
 	    objectflows 	(list objectflow_list)
 	    statediagrams 	(list StateDiagrams
 		(object State_Diagram "接收文件（SRS_case2）需求分析"
@@ -72,7 +132,7 @@
 			    quidu      	"58EDCC850314"
 			    autoResize 	TRUE)
 			(object StateView "Normal" "选择我要接收" @2
-			    location   	(606, 331)
+			    location   	(591, 350)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -84,7 +144,7 @@
 				default_color 	TRUE)
 			    label      	(object ItemLabel
 				Parent_View 	@2
-				location   	(606, 320)
+				location   	(591, 339)
 				fill_color 	13434879
 				anchor_loc 	1
 				nlines     	2
@@ -96,7 +156,149 @@
 			    fill_color 	13434879
 			    quidu      	"58EDCC880030"
 			    height     	134
-			    autoResize 	TRUE)))))
+			    autoResize 	TRUE)
+			(object TransView "" @3
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"58EDCCB201EB"
+			    client     	@1
+			    supplier   	@2
+			    vertices   	(list Points
+				(582, 182)
+				(587, 283))
+			    line_style 	0
+			    x_offset   	FALSE)
+			(object StateView "Normal" "打开录音，录制并解析声波" @4
+			    location   	(603, 592)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@4
+				location   	(603, 581)
+				fill_color 	13434879
+				anchor_loc 	1
+				nlines     	2
+				max_width  	314
+				justify    	0
+				label      	"打开录音，录制并解析声波")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"58EDCCB70042"
+			    width      	410
+			    height     	134
+			    autoResize 	TRUE)
+			(object TransView "" @5
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"58EDCCD103BE"
+			    client     	@2
+			    supplier   	@4
+			    vertices   	(list Points
+				(594, 416)
+				(599, 525))
+			    line_style 	0
+			    x_offset   	FALSE)
+			(object StateView "Normal" "利用声波中的ip，连接server" @6
+			    location   	(614, 855)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@6
+				location   	(614, 844)
+				fill_color 	13434879
+				anchor_loc 	1
+				nlines     	2
+				max_width  	338
+				justify    	0
+				label      	"利用声波中的ip，连接server")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"58EDCCD4011B"
+			    width      	434
+			    height     	134
+			    autoResize 	TRUE)
+			(object TransView "" @7
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"58EDCCEB000B"
+			    client     	@4
+			    supplier   	@6
+			    vertices   	(list Points
+				(605, 659)
+				(611, 788))
+			    line_style 	0
+			    x_offset   	FALSE)
+			(object StateView "Normal" "读取文件流，并写入本地" @8
+			    location   	(622, 1073)
+			    font       	(object Font
+				size       	10
+				face       	"Arial"
+				bold       	FALSE
+				italics    	FALSE
+				underline  	FALSE
+				strike     	FALSE
+				color      	0
+				default_color 	TRUE)
+			    label      	(object ItemLabel
+				Parent_View 	@8
+				location   	(622, 1062)
+				fill_color 	13434879
+				anchor_loc 	1
+				nlines     	2
+				max_width  	312
+				justify    	0
+				label      	"读取文件流，并写入本地")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"58EDCCF200DA"
+			    width      	408
+			    height     	134
+			    autoResize 	TRUE)
+			(object TransView "" @9
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"58EDCD1900F5"
+			    client     	@6
+			    supplier   	@8
+			    vertices   	(list Points
+				(616, 922)
+				(619, 1005))
+			    line_style 	0
+			    x_offset   	FALSE)
+			(object StateView "EndState" "$UNNAMED$1" @10
+			    location   	(631, 1369)
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    quidu      	"58EDCD1D0270"
+			    autoResize 	TRUE)
+			(object TransView "" @11
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"58EDCD21023D"
+			    client     	@8
+			    supplier   	@10
+			    vertices   	(list Points
+				(624, 1140)
+				(629, 1327))
+			    line_style 	0
+			    x_offset   	FALSE)))))
 	logical_presentations 	(list unit_reference_list
 	    (object UseCaseDiagram "Main"
 		quid       	"58EDC6D9031A"
@@ -117,7 +319,7 @@
 	statemachine 	(object State_Machine "发送文件（SRS_case1）需求分析"
 	    quid       	"58EDC75E028E"
 	    states     	(list States
-		(object State "$UNNAMED$1"
+		(object State "$UNNAMED$2"
 		    quid       	"58EDC7670173"
 		    type       	"StartState")
 		(object State "选择发送"
@@ -132,10 +334,10 @@
 		(object State "创建server，发送声波，等待有客户端连接"
 		    quid       	"58EDC7DA0036"
 		    type       	"Normal")
-		(object State "$UNNAMED$2"
+		(object State "$UNNAMED$3"
 		    quid       	"58EDC84E0168"
 		    type       	"EndState")
-		(object State "$UNNAMED$3"
+		(object State "$UNNAMED$4"
 		    quid       	"58EDC861029A"
 		    type       	"EndState")
 		(object State "客户端连接成功"
@@ -151,7 +353,7 @@
 		    quid       	"58EDC79601DD"
 		    supplier   	"Logical View::发送文件（SRS_case1）需求分析::选择发送"
 		    supplier_quidu 	"58EDC77E0196"
-		    client     	"$UNNAMED$1"
+		    client     	"$UNNAMED$2"
 		    client_quidu 	"58EDC7670173"
 		    sendEvent  	(object sendEvent
 			quid       	"58EDC79601E0"))
@@ -181,7 +383,7 @@
 			quid       	"58EDC803033B"))
 		(object State_Transition
 		    quid       	"58EDC8AB034D"
-		    supplier   	"$UNNAMED$3"
+		    supplier   	"$UNNAMED$4"
 		    supplier_quidu 	"58EDC861029A"
 		    client     	"Logical View::发送文件（SRS_case1）需求分析::文件传输完毕"
 		    client_quidu 	"58EDC8920322"
@@ -222,13 +424,13 @@
 		    origin_x   	0
 		    origin_y   	0
 		    items      	(list diagram_item_list
-			(object StateView "StartState" "$UNNAMED$1" @3
+			(object StateView "StartState" "$UNNAMED$2" @12
 			    location   	(698, 108)
 			    icon_style 	"Icon"
 			    line_color 	3342489
 			    quidu      	"58EDC7670173"
 			    autoResize 	TRUE)
-			(object StateView "Normal" "选择发送" @4
+			(object StateView "Normal" "选择发送" @13
 			    location   	(700, 280)
 			    font       	(object Font
 				size       	10
@@ -240,7 +442,7 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
-				Parent_View 	@4
+				Parent_View 	@13
 				location   	(700, 269)
 				fill_color 	13434879
 				anchor_loc 	1
@@ -254,18 +456,18 @@
 			    quidu      	"58EDC77E0196"
 			    height     	134
 			    autoResize 	TRUE)
-			(object TransView "" @5
+			(object TransView "" @14
 			    stereotype 	TRUE
 			    line_color 	3342489
 			    quidu      	"58EDC79601DD"
-			    client     	@3
-			    supplier   	@4
+			    client     	@12
+			    supplier   	@13
 			    vertices   	(list Points
 				(698, 137)
 				(699, 213))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object StateView "Normal" "选择目标文件" @6
+			(object StateView "Normal" "选择目标文件" @15
 			    location   	(716, 498)
 			    font       	(object Font
 				size       	10
@@ -277,7 +479,7 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
-				Parent_View 	@6
+				Parent_View 	@15
 				location   	(716, 487)
 				fill_color 	13434879
 				anchor_loc 	1
@@ -291,18 +493,18 @@
 			    quidu      	"58EDC7A20361"
 			    height     	134
 			    autoResize 	TRUE)
-			(object TransView "" @7
+			(object TransView "" @16
 			    stereotype 	TRUE
 			    line_color 	3342489
 			    quidu      	"58EDC7B50328"
-			    client     	@4
-			    supplier   	@6
+			    client     	@13
+			    supplier   	@15
 			    vertices   	(list Points
 				(704, 346)
 				(711, 431))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object StateView "Normal" "点击完成" @8
+			(object StateView "Normal" "点击完成" @17
 			    location   	(728, 726)
 			    font       	(object Font
 				size       	10
@@ -314,7 +516,7 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
-				Parent_View 	@8
+				Parent_View 	@17
 				location   	(728, 715)
 				fill_color 	13434879
 				anchor_loc 	1
@@ -328,18 +530,18 @@
 			    quidu      	"58EDC7B801FD"
 			    height     	134
 			    autoResize 	TRUE)
-			(object TransView "" @9
+			(object TransView "" @18
 			    stereotype 	TRUE
 			    line_color 	3342489
 			    quidu      	"58EDC7D001EC"
-			    client     	@6
-			    supplier   	@8
+			    client     	@15
+			    supplier   	@17
 			    vertices   	(list Points
 				(719, 564)
 				(724, 659))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object StateView "Normal" "创建server，发送声波，等待有客户端连接" @10
+			(object StateView "Normal" "创建server，发送声波，等待有客户端连接" @19
 			    location   	(728, 959)
 			    font       	(object Font
 				size       	10
@@ -351,7 +553,7 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
-				Parent_View 	@10
+				Parent_View 	@19
 				location   	(728, 948)
 				fill_color 	13434879
 				anchor_loc 	1
@@ -366,24 +568,24 @@
 			    width      	550
 			    height     	134
 			    autoResize 	TRUE)
-			(object TransView "" @11
+			(object TransView "" @20
 			    stereotype 	TRUE
 			    line_color 	3342489
 			    quidu      	"58EDC8030338"
-			    client     	@8
-			    supplier   	@10
+			    client     	@17
+			    supplier   	@19
 			    vertices   	(list Points
 				(728, 793)
 				(728, 892))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object StateView "EndState" "$UNNAMED$3" @12
+			(object StateView "EndState" "$UNNAMED$4" @21
 			    location   	(730, 1751)
 			    icon_style 	"Icon"
 			    line_color 	3342489
 			    quidu      	"58EDC861029A"
 			    autoResize 	TRUE)
-			(object StateView "Normal" "客户端连接成功" @13
+			(object StateView "Normal" "客户端连接成功" @22
 			    location   	(728, 1214)
 			    font       	(object Font
 				size       	10
@@ -395,7 +597,7 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
-				Parent_View 	@13
+				Parent_View 	@22
 				location   	(728, 1203)
 				fill_color 	13434879
 				anchor_loc 	1
@@ -409,7 +611,7 @@
 			    quidu      	"58EDC8670138"
 			    height     	134
 			    autoResize 	TRUE)
-			(object StateView "Normal" "文件传输完毕" @14
+			(object StateView "Normal" "文件传输完毕" @23
 			    location   	(728, 1501)
 			    font       	(object Font
 				size       	10
@@ -421,7 +623,7 @@
 				color      	0
 				default_color 	TRUE)
 			    label      	(object ItemLabel
-				Parent_View 	@14
+				Parent_View 	@23
 				location   	(728, 1490)
 				fill_color 	13434879
 				anchor_loc 	1
@@ -435,18 +637,18 @@
 			    quidu      	"58EDC8920322"
 			    height     	134
 			    autoResize 	TRUE)
-			(object TransView "" @15
+			(object TransView "" @24
 			    stereotype 	TRUE
 			    line_color 	3342489
 			    quidu      	"58EDC8AB034D"
-			    client     	@14
-			    supplier   	@12
+			    client     	@23
+			    supplier   	@21
 			    vertices   	(list Points
 				(728, 1568)
 				(729, 1709))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object TransView "" @16
+			(object TransView "" @25
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -456,8 +658,8 @@
 				strike     	FALSE
 				color      	0
 				default_color 	TRUE)
-			    label      	(object SegLabel @17
-				Parent_View 	@16
+			    label      	(object SegLabel @26
+				Parent_View 	@25
 				location   	(773, 1358)
 				font       	(object Font
 				    size       	10
@@ -480,19 +682,19 @@
 			    stereotype 	TRUE
 			    line_color 	3342489
 			    quidu      	"58EDC8AE02E1"
-			    client     	@13
-			    supplier   	@14
+			    client     	@22
+			    supplier   	@23
 			    vertices   	(list Points
 				(728, 1281)
 				(728, 1434))
 			    line_style 	0
 			    x_offset   	FALSE)
-			(object TransView "" @18
+			(object TransView "" @27
 			    stereotype 	TRUE
 			    line_color 	3342489
 			    quidu      	"58EDC8B5003E"
-			    client     	@10
-			    supplier   	@13
+			    client     	@19
+			    supplier   	@22
 			    vertices   	(list Points
 				(728, 1026)
 				(728, 1147))
