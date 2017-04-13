@@ -35,3 +35,15 @@ https://zh.wikipedia.org/wiki/MVC
 
 android oom
 http://www.imooc.com/article/12915
+
+
+深入理解Android网络编程：技术详解与最佳实践
+机械工业出版社
+出版时间 2013年8月
+陈文 郭依正 著
+ISBN：9787111435020
+
+
+TODO：
+多线程传输
+断点续传
