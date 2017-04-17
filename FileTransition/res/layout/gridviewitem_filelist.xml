@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:gravity="center"
+    >
+
+    <ImageView
+        android:id="@+id/img_gridViewItem_fileList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/file"
+        />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_gridViewItem_fileList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件"
+        android:maxLines="2"
+        android:textColor="@android:color/black"
+        />
+    
+    <TextView 
+        android:id="@+id/tv_gridViewItem_fileList_fileNum"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tv_gridViewItem_fileList_filePath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="filePath"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tv_gridViewItem_fileList_fileType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fileType"
+        android:visibility="gone"
+        />
+
+
+</LinearLayout>
