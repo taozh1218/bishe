@@ -1,4 +1,5 @@
 package com.taozhang.filetransition.ui.fragment;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Fragment;
@@ -12,11 +13,10 @@ import android.view.ViewGroup;
 import com.taozhang.filetransition.R;
 
 /**
- * Description: This is a Frag in which we can operate the Computer
- * Created by taozhang on 2016/5/10.
- * Company:Geowind,University of South China.
+ * Description: This is a Frag in which we can operate the Computer Created by
+ * taozhang on 2016/5/10. Company:Geowind,University of South China.
  * ContactQQ:962076337
- *
+ * 
  * @updateAuthor taozhang
  * @updateDate 2016/5/10
  */
@@ -24,46 +24,50 @@ import com.taozhang.filetransition.R;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class OperateComputerFragment extends Fragment {
 
-    private Context context;
-    private View computer;
-    @SuppressLint("NewApi")
+	private Context context;
+	private View computer;
+	@SuppressLint("NewApi")
 	private Fragment current_frag;
 
-    @SuppressLint("ValidFragment")
+
 	private static OperateComputerFragment computerFragment_instance = null;
 
-    @SuppressLint("ValidFragment")
 	private OperateComputerFragment(Context context) {
-        this.context = context;
-    }
+		this.context = context;
+	}
 
-    public static OperateComputerFragment getInstance(Context context) {
-        if (computerFragment_instance == null) {
-            synchronized (OperateComputerFragment.class) {
-                if (computerFragment_instance == null) {
-                    computerFragment_instance = new OperateComputerFragment(context);
-                }
-            }
-        }
-        return computerFragment_instance;
-    }
+	public OperateComputerFragment() {
+		super();
+	}
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+	public static OperateComputerFragment getInstance(Context context) {
+		if (computerFragment_instance == null) {
+			synchronized (OperateComputerFragment.class) {
+				if (computerFragment_instance == null) {
+					computerFragment_instance = new OperateComputerFragment(
+							context);
+				}
+			}
+		}
+		return computerFragment_instance;
+	}
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //inflate the view of fragment
-        computer = inflater.inflate(R.layout.frag_computer,null);
-        getComponent();
-        return computer;
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+	}
 
-    private void getComponent() {
-        //TODO 
-    }
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		// inflate the view of fragment
+		computer = inflater.inflate(R.layout.frag_computer, null);
+		getComponent();
+		return computer;
+	}
 
+	private void getComponent() {
+		// TODO
+	}
 
 }

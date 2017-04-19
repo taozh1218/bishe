@@ -1,6 +1,5 @@
 package com.taozhang.filetransition.adapter;
 
-import java.io.File;
 import java.util.List;
 
 import android.content.Context;
@@ -8,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 
 import com.taozhang.filetransition.R;
 import com.taozhang.filetransition.bean.FileDetail;
-import com.taozhang.filetransition.util.OpenDocumentUtil;
 
 public class AdapterOfFileDetail extends BaseAdapter {
 
@@ -91,8 +88,7 @@ public class AdapterOfFileDetail extends BaseAdapter {
 			} else if (type.equals("mp4")) {
 				holder.img.setImageBitmap(getBitmap(R.drawable.audio_red));
 			} else if (type.equals("docx") || type.equals("xlsx")
-					|| type.equals("doc") || type.equals("pptx")
-					|| type.equals("accdb")) {
+					|| type.equals("pptx") || type.equals("accdb")) {
 				holder.img.setImageBitmap(getBitmap(R.drawable.office_red));
 			} else {
 				holder.img.setImageBitmap(getBitmap(R.drawable.file_blue_32));
@@ -101,15 +97,15 @@ public class AdapterOfFileDetail extends BaseAdapter {
 			holder.type.setText(bean.getType());
 			holder.path.setText(bean.getPath());
 			final String path = holder.path.getText().toString();
-//			holder.rl.setOnClickListener(new OnClickListener() {
-//
-//				@Override
-//				public void onClick(View arg0) {
-//					//TODO ≤‚ ‘
-//					File file = new File(path);
-//					OpenDocumentUtil.openFile(file,context);
-//				}
-//			});
+			// holder.rl.setOnClickListener(new OnClickListener() {
+			//
+			// @Override
+			// public void onClick(View arg0) {
+			// //TODO ≤‚ ‘
+			// File file = new File(path);
+			// OpenDocumentUtil.openFile(file,context);
+			// }
+			// });
 		}
 		return convertView;
 	}

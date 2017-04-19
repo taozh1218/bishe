@@ -22,16 +22,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.taozhang.filetransition.R;
+import com.taozhang.filetransition.base.App;
 import com.taozhang.filetransition.impl.IntentImpl;
 import com.taozhang.filetransition.ui.fragment.HistoryFragment;
 import com.taozhang.filetransition.ui.fragment.HomeFragment;
 import com.taozhang.filetransition.ui.fragment.ProfileFragment;
+import com.taozhang.filetransition.ui.fragment.SearchFragment;
 
 /**
  * the entrance activity
  */
 @SuppressLint("NewApi")
-public class MainActivity extends Activity implements IntentImpl{
+public class MainActivity extends Activity implements IntentImpl {
 
 	/**
 	 * 标记是否退出
@@ -41,7 +43,7 @@ public class MainActivity extends Activity implements IntentImpl{
 	private ImageView mImg_history;
 	private ImageView mImg_profile;
 	private ImageView mImg_computer;
-	private Fragment current_frag;
+	private static Fragment current_frag;
 	private TextView mTv_home;
 	private TextView mTv_computer;
 	private TextView mTv_history;
@@ -53,7 +55,37 @@ public class MainActivity extends Activity implements IntentImpl{
 		setContentView(R.layout.activity_main);
 
 		initComponent();
-
+		// init HomeFragment
+		
+		FragmentManager fragmentManager = getFragmentManager();
+		FragmentTransaction fragmentTransaction = fragmentManager
+				.beginTransaction();
+		// check saveInstanceState
+		if(savedInstanceState != null){
+			// 保存有數據
+			int cur = savedInstanceState.getInt(CURRENT);
+			// 先把所有fragment隱藏
+			fragmentTransaction.hide(HomeFragment.getInstance(App.context));
+			fragmentTransaction.hide(SearchFragment.getInstance());
+			fragmentTransaction.hide(HistoryFragment.getInstance(App.context));
+			fragmentTransaction.hide(ProfileFragment.getInstance(App.context));
+			if(cur == 0){
+				fragmentTransaction.show(HomeFragment.getInstance(App.context));
+			}else if(cur == 1){
+				fragmentTransaction.show(SearchFragment.getInstance());
+			}else if(cur == 2){
+				fragmentTransaction.show(HistoryFragment.getInstance(App.context));
+			}else if(cur == 3){
+				fragmentTransaction.show(ProfileFragment.getInstance(App.context));
+			}
+		}else{
+			current_frag = HomeFragment.getInstance(getApplicationContext());
+			changeHomeColor();
+			fragmentTransaction.add(R.id.frameLayout_MainAct, current_frag);
+		}
+		
+		
+		fragmentTransaction.commit();
 	}
 
 	@SuppressLint("NewApi")
@@ -63,6 +95,7 @@ public class MainActivity extends Activity implements IntentImpl{
 		LinearLayout ll_profile = (LinearLayout) findViewById(R.id.ll_tabBarProfile);
 		LinearLayout ll_tabBarComputer = (LinearLayout) findViewById(R.id.ll_tabBarComputer);
 		mImg_home = (ImageView) findViewById(R.id.img_tabBarHome);
+
 		mImg_computer = (ImageView) findViewById(R.id.img_tabBarComputer);
 		mImg_history = (ImageView) findViewById(R.id.img_tabBarHistory);
 		mImg_profile = (ImageView) findViewById(R.id.img_tabBarProfile);
@@ -73,63 +106,72 @@ public class MainActivity extends Activity implements IntentImpl{
 
 		// add Listener
 		ll_home.setOnClickListener(mOnClickListener);
-		ll_history.setOnClickListener(mOnClickListener);
-		ll_profile.setOnClickListener(mOnClickListener);
+		ll_home.setTag(0); // 標記為0號
 		ll_tabBarComputer.setOnClickListener(mOnClickListener);
+		ll_tabBarComputer.setTag(1);
+		ll_history.setOnClickListener(mOnClickListener);
+		ll_history.setTag(2);// 標記為1號
+		ll_profile.setOnClickListener(mOnClickListener);
+		ll_profile.setTag(3);
 
-		// init HomeFragment
-		FragmentManager fragmentManager = getFragmentManager();
-		FragmentTransaction fragmentTransaction = fragmentManager
-				.beginTransaction();
-		current_frag = HomeFragment.getInstance(getApplicationContext());
-		changeHomeColor();
-		fragmentTransaction.add(R.id.frameLayout_MainAct, current_frag);
-		fragmentTransaction.commit();
 	}
 
+	private FragmentManager fragmentManager = getFragmentManager();
+	private static Fragment toFragment;
 	@SuppressLint("NewApi")
 	View.OnClickListener mOnClickListener = new View.OnClickListener() {
+
 		@SuppressLint("NewApi")
 		@Override
 		public void onClick(View v) {
 			int id = v.getId();
-			FragmentManager fragmentManager = getFragmentManager();
-			FragmentTransaction fragmentTransaction = fragmentManager
-					.beginTransaction();
-			if (current_frag != null) {
-				// Log.i("MainActivity onClick",
-				// "fragmentTransaction.remove()");
-				fragmentTransaction.remove(current_frag);
-			}
+			currentIndex = (Integer) v.getTag(); // 記錄下標
 			switch (id) {
 			case R.id.ll_tabBarHome:// 主页
-				current_frag = HomeFragment.getInstance(getApplication());
+				toFragment = HomeFragment.getInstance(getApplication());
+
 				changeHomeColor();
 				break;
 			case R.id.ll_tabBarComputer:// 电脑
-				current_frag = SearchFragment.getInstance();
+				toFragment = SearchFragment.getInstance();
 				changeComputerColor();
 				break;
 			case R.id.ll_tabBarHistory:// 历史文件
-				current_frag = HistoryFragment
+				toFragment = HistoryFragment
 						.getInstance(getApplicationContext());
 				changeHistoryColor();
 				break;
 			case R.id.ll_tabBarProfile:// 个人信息
-				current_frag = ProfileFragment
+				toFragment = ProfileFragment
 						.getInstance(getApplicationContext());
 				changeProfileColor();
 				break;
 			}
-			fragmentTransaction.add(R.id.frameLayout_MainAct, current_frag);
-			// Add this transaction to the back stack. This means that the
-			// transaction will be remembered after it is committed, and will
-			// reverse its operation when later popped off the stack.
-			// parameter:An optional name for this back stack state, or null.
-			fragmentTransaction.addToBackStack(null);// 测试时，发现如果没有这个，再次点击同一个按钮，那个frag不会显示，官方：当点击返回键需要返回上一个frag时，需要这句话
-			fragmentTransaction.commit();
+			changeFragment(current_frag, toFragment);// 改变fragment
+			current_frag = toFragment;// 切换，当前的fragment
 		}
 	};
+
+	/**
+	 * 切换fragment
+	 * 
+	 * @param from
+	 *            原来的framgent
+	 * @param to
+	 *            要切换的目标fragment
+	 */
+	private void changeFragment(Fragment from, Fragment to) {
+		FragmentTransaction fragmentTransaction = fragmentManager
+				.beginTransaction();
+		if (to.isAdded()) {
+			// 已经添加过了，显示
+			fragmentTransaction.hide(from).show(to).commit();
+		} else {
+			fragmentTransaction.hide(from).add(R.id.frameLayout_MainAct, to)
+					.commit();
+		}
+
+	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -162,7 +204,7 @@ public class MainActivity extends Activity implements IntentImpl{
 	}
 
 	public void changeHomeColor() {
-		mImg_home.setImageResource(R.drawable.home_red);
+		mImg_home.setImageResource(R.drawable.phone_red);
 		mTv_home.setTextColor(Color.RED);
 
 		// 其他是黑色
@@ -175,7 +217,7 @@ public class MainActivity extends Activity implements IntentImpl{
 	}
 
 	public void changeComputerColor() {
-		mImg_home.setImageResource(R.drawable.home_black);
+		mImg_home.setImageResource(R.drawable.phone_black);
 		mTv_home.setTextColor(Color.BLACK);
 		mImg_computer.setImageResource(R.drawable.computer_red);
 		mTv_computer.setTextColor(Color.RED);
@@ -186,7 +228,7 @@ public class MainActivity extends Activity implements IntentImpl{
 	}
 
 	public void changeHistoryColor() {
-		mImg_home.setImageResource(R.drawable.home_black);
+		mImg_home.setImageResource(R.drawable.phone_black);
 		mTv_home.setTextColor(Color.BLACK);
 		mImg_computer.setImageResource(R.drawable.computer_black);
 		mTv_computer.setTextColor(Color.BLACK);
@@ -197,7 +239,7 @@ public class MainActivity extends Activity implements IntentImpl{
 	}
 
 	public void changeProfileColor() {
-		mImg_home.setImageResource(R.drawable.home_black);
+		mImg_home.setImageResource(R.drawable.phone_black);
 		mTv_home.setTextColor(Color.BLACK);
 		mImg_computer.setImageResource(R.drawable.computer_black);
 		mTv_computer.setTextColor(Color.BLACK);
@@ -209,13 +251,13 @@ public class MainActivity extends Activity implements IntentImpl{
 
 	@Override
 	public void intentToFileActivity(InetSocketAddress address) {
-			
-		 Intent intent = new Intent(MainActivity.this,FileListActivity.class);
-		 Bundle bundle = new Bundle();
-		 bundle.putSerializable("IP", address);
-		 intent.putExtra("bundle", bundle);
-		 startActivity(intent);	
-		
+
+		Intent intent = new Intent(MainActivity.this, FileListActivity.class);
+		Bundle bundle = new Bundle();
+		bundle.putSerializable("IP", address);
+		intent.putExtra("bundle", bundle);
+		startActivity(intent);
+
 	}
 
 	/**
@@ -223,15 +265,35 @@ public class MainActivity extends Activity implements IntentImpl{
 	 */
 	@Override
 	public String getLocalIpAddress() {
-		  WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-	        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-	        // 获取32位整型IP地址
-	        int ipAddress = wifiInfo.getIpAddress();
+		WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+		WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+		// 获取32位整型IP地址
+		int ipAddress = wifiInfo.getIpAddress();
 
-	        // 返回整型地址转换成“*.*.*.*”地址
-	        return String.format("%d.%d.%d.%d", (ipAddress & 0xff),
-	                (ipAddress >> 8 & 0xff), (ipAddress >> 16 & 0xff),
-	                (ipAddress >> 24 & 0xff));
+		// 返回整型地址转换成“*.*.*.*”地址
+		return String.format("%d.%d.%d.%d", (ipAddress & 0xff),
+				(ipAddress >> 8 & 0xff), (ipAddress >> 16 & 0xff),
+				(ipAddress >> 24 & 0xff));
 	}
 
+	@Override
+	public void changeFragmentTo(Fragment to) {
+		changeFragment(current_frag, to);
+	}
+
+	@Override
+	public void intentToAnotherActivity(Class<? extends Activity> clazz) {
+		Intent intent = new Intent(MainActivity.this, clazz);
+		startActivity(intent);
+	}
+
+	private static final String CURRENT = "currentIndex";
+	private int currentIndex = 0;
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		// 保存當前fragment
+		outState.putInt(CURRENT, currentIndex);
+	}
 }

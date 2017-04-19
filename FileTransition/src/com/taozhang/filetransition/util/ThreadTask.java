@@ -1,19 +1,18 @@
 package com.taozhang.filetransition.util;
 
-import android.os.Handler;
-import android.util.Log;
-
-import com.taozhang.filetransition.adapter.AdapterOfServerListView;
-import com.taozhang.filetransition.bean.ServiceBean;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.net.SocketException;
 import java.util.ArrayList;
+
+import android.os.Handler;
+import android.util.Log;
+
+import com.taozhang.filetransition.adapter.AdapterOfServerListView;
+import com.taozhang.filetransition.bean.ServiceBean;
 
 public class ThreadTask implements Runnable {
     private ArrayList<ServiceBean> list = new ArrayList<ServiceBean>();

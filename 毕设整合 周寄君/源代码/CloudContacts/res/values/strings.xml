@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">云通讯录</string>
+    <string name="action_settings">设置</string>
+    <string name="welcome">云通讯录</string>
+    <string name="version">1.0</string>
+    <string name="title_activity_card">详细信息</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="text_tel">电话号码</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="call">打电话</string>
+    <string name="message">发短信</string>
+    <string name="signout">注销</string>
+    <string name="title_section1">群组</string>
+    <string name="title_section2">个人设置</string>
+    <string name="title_activity_join_group">加入组</string>
+    <string name="title_activity_create_group">创建新组</string>
+    <string name="title_activity_view_group">查看组信息</string>
+    <string name="title_activity_chat">组聊</string>
+    <string name="away">离开组</string>
+    <string name="play">播放语言</string>
+    <string name="text">+</string>
+    <string name="text_btn_sendmsg">发送</string>
+    <string name="send_pic">发送图片</string>
+    <string name="text_btn_record">按键说话</string>
+
+</resources>

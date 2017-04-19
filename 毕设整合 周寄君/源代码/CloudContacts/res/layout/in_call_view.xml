@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.plus.cloudcontacts"  
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <com.plus.cloudcontacts.service.InCallView 
+        android:id="@+id/viewIcv"
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_centerInParent="true" 
+        android:paddingTop="10dp" 
+        android:paddingLeft="50dp" 
+        android:paddingRight="50dp" 
+        android:paddingBottom="10dp" 
+        custom:titleText="来电" 
+        custom:titleTextSize="30sp"  
+        custom:titleTextColor="#111111"   /> 
+
+</RelativeLayout>

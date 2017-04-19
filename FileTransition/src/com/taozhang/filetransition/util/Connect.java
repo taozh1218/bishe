@@ -1,50 +1,39 @@
 package com.taozhang.filetransition.util;
 
-import android.util.Log;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.net.UnknownHostException;
+
+import android.util.Log;
 
 /**
  * 锟斤拷锟接凤拷锟斤拷锟斤拷锟斤拷锟斤拷
  * 
  * @author Administrator
- *
+ * 
  */
 public class Connect {
 	private volatile static Connect con;
-	private Socket socket;
+	private   Socket socket;
 	public DataOutputStream dOps;
 	public DataInputStream dIps;
 
-
-	private Connect(String address) {
-
-		try {
-			socket = new Socket(address,10088);
-			dOps = new DataOutputStream(socket.getOutputStream());
-			dIps = new DataInputStream(socket.getInputStream());
-			Log.i("socket", "杩炴帴鎴愬姛");
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private Connect() {
+		
 	}
 
-
 	
-	public static Connect getInstance(InetSocketAddress address) {
+
+	public static Connect getInstance() {
 		if (con == null) {
 			// 锟斤拷锟斤拷
 			synchronized (Connect.class) {
 				if (con == null) {
-					con = new Connect(address.getAddress().getHostAddress());
+					
+					con = new Connect();
 				}
 			}
 		}
@@ -52,6 +41,22 @@ public class Connect {
 		return con;
 	}
 
+	public boolean connectServer(InetSocketAddress address, int port){
+		try {
+			socket = new Socket(address.getAddress().getHostAddress(), port);
+			dOps = new DataOutputStream(socket.getOutputStream());
+			dIps = new DataInputStream(socket.getInputStream());
+			Log.i("socket", "杩炴帴鎴愬姛");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean isConnected(){
+		return socket == null ? false : true;
+	}
 	/**
 	 * 锟斤拷锟斤拷锟斤拷息锟侥凤拷锟斤拷
 	 * 
@@ -65,7 +70,15 @@ public class Connect {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
+	}
+
+	public  void disConnect() {
+		try {
+			socket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -75,8 +88,10 @@ public class Connect {
 	 * @throws IOException
 	 */
 	public String getMsg() throws IOException {
-		 String readUTF =  dIps.readUTF();
+		
+		String readUTF = dIps.readUTF();
+		
 		return readUTF;
-		}
+	}
 
 }

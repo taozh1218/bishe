@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".GroupListActivity" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnImport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="导入到手机"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/btnSendMsg"
+            android:text="组聊" />
+
+        <Button
+            android:id="@+id/btnSendMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/btnViewGroup"
+            android:text="群发短信" />
+
+        <Button
+            android:id="@+id/btnViewGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="查看组信息" />
+    </RelativeLayout>
+
+    <!-- 
+    <Button
+        android:id="@+id/btnAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/btnViewGroup"
+        android:text="离开组" />
+	 -->
+	   <FrameLayout  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent"  
+        android:background="#ffffff" >  
+        
+	    <ListView
+	        android:id="@+id/groupList"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	    </ListView>
+  
+        <TextView  
+            android:id="@+id/tv"  
+            android:layout_width="60dp"  
+            android:layout_height="60dp"  
+            android:layout_gravity="center"  
+            android:background="#f0606060"  
+            android:gravity="center"  
+            android:text="A"  
+            android:textColor="#ffffff"  
+            android:textSize="30sp" />  
+  
+        <LinearLayout  
+            android:id="@+id/layout"  
+            android:layout_width="wrap_content"  
+            android:layout_height="fill_parent"  
+            android:layout_gravity="right"  
+            android:background="#d7d7d7"  
+            android:gravity="center"  
+            android:orientation="vertical" >  
+        </LinearLayout>  
+    </FrameLayout>  
+   
+</LinearLayout>

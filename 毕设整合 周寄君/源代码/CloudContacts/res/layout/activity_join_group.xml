@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加入一个群组"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/groupCode"
+            android:layout_width="236dp"
+            android:layout_height="wrap_content"
+            android:hint="在此输入组key"
+            android:ems="10" />
+
+        <Button
+            android:id="@+id/btnMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="匹配" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/newGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建一个新组？"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/newGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击这里" />
+
+</LinearLayout>

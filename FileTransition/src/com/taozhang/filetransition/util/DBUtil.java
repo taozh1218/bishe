@@ -1,6 +1,5 @@
 package com.taozhang.filetransition.util;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
 
 import com.taozhang.filetransition.bean.FileDetail;
 import com.taozhang.filetransition.helper.MySQLiteOpenHelper;

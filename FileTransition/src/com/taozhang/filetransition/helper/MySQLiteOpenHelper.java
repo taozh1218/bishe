@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
 	public final static int VERSION = 1;
+	public static final String DROP_TB = "drop table if exists userInfo";
 
 	private static MySQLiteOpenHelper helper;
 
@@ -26,7 +27,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	 *            数据库名字
 	 */
 	private MySQLiteOpenHelper(Context context) {
-		super(context, Constant.DATABASE_FILENAME, null, VERSION);
+		super(context, Constant.DATABASE_NAME, null, VERSION);
 	}
 
 	public static MySQLiteOpenHelper newInstance(Context context) {
@@ -43,10 +44,13 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// 当数据库创建时，执行建表操作
-		db.execSQL("CREATE TABLE if not exists fileinfo("
-				+ "name String DEFAULT \"\"," + // default null/ ""
-				"type String DEFAULT \"\");");
-		System.out.println("数据库创建成功，并且建立了fileinfo表！");
+		db.execSQL("CREATE TABLE if not exists userInfo("
+				+ "_id integer primary key autoincrement,"
+				+ "uid String DEFAULT \"\"," + // default null/ ""
+				"psw String DEFAULT \"\"," +
+				"username String ," +
+				"sign String )");
+		System.out.println("数据库创建成功，并且建立了userInfo表！");
 	}
 
 	@Override

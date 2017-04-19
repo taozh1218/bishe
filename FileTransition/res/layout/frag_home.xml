@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/custom_green"
-        android:text="文件传输" />
+        android:text="手机互传"
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:id="@+id/ll_fragHome1"
@@ -18,21 +19,21 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.191"
             android:visibility="invisible" />
 
         <Button
             android:id="@+id/btn_sendFileHomeFrag"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.618"
             android:background="@drawable/shape"
             android:text="	我要发送	" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.191"
             android:visibility="invisible" />
     </LinearLayout>
 
@@ -45,7 +46,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.191"
             android:visibility="invisible" />
 
         <Button
@@ -53,14 +54,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_weight="1"
+            android:layout_weight="0.618"
             android:background="@drawable/shape"
             android:text="	我要接收	" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.191"
             android:visibility="invisible" />
     </LinearLayout>
 

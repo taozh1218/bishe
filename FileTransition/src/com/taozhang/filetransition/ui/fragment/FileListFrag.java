@@ -3,11 +3,6 @@ package com.taozhang.filetransition.ui.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.taozhang.filetransition.R;
-import com.taozhang.filetransition.adapter.AdapterOfFileDetail;
-import com.taozhang.filetransition.bean.FileDetail;
-import com.taozhang.filetransition.util.DBUtil;
-
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
@@ -16,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.taozhang.filetransition.R;
+import com.taozhang.filetransition.adapter.AdapterOfFileDetail;
+import com.taozhang.filetransition.bean.FileDetail;
+import com.taozhang.filetransition.util.DBUtil;
 
 @SuppressLint("ValidFragment")
 public class FileListFrag extends Fragment {
@@ -30,6 +30,11 @@ public class FileListFrag extends Fragment {
 
 	private FileListFrag(Context context) {
 		this.context = context;
+	}
+
+	public FileListFrag() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public static FileListFrag getInstance(Context context) {

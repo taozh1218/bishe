@@ -1,5 +1,7 @@
 package com.taozhang.filetransition.bean;
 
+import android.graphics.Bitmap;
+
 /**
  * 从文件管理器中获取的文件信息
  * @author taozhang
@@ -21,6 +23,13 @@ public class FileDetail {
 	 * 绝对路径
 	 */
 	private String path;
+	
+	/**
+	 * id
+	 */
+	private long id;
+	
+	
 	public FileDetail() {
 		super();
 	}
@@ -29,6 +38,14 @@ public class FileDetail {
 		this.name = name;
 		this.type = type;
 		this.path = path;
+	}
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

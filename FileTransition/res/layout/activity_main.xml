@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.taozhang.filetransition.ui.MainActivity">
-
+    tools:context="com.taozhang.filetransition.ui.MainActivity" >
 
     <LinearLayout
         android:id="@+id/ll_tabBar_mainAct"
@@ -13,15 +11,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        >
-        <!--  android:scaleType="centerInside" 原图按比例缩放-->
+        android:paddingBottom="5dp" >
+
+        <!-- android:scaleType="centerInside" 原图按比例缩放 -->
+
         <LinearLayout
             android:id="@+id/ll_tabBarHome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/img_tabBarHome"
@@ -29,17 +34,15 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:scaleType="centerInside"
-                android:src="@drawable/home_black"
-                />
+                android:src="@drawable/phone_black" />
 
             <TextView
                 android:id="@+id/tv_tabBarHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="首页"
-                android:textSize="10dp"
-                />
+                android:text="手机互传"
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -47,7 +50,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/img_tabBarComputer"
@@ -55,8 +64,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:scaleType="centerInside"
-                android:src="@drawable/computer_black"
-                />
+                android:src="@drawable/computer_black" />
 
             <TextView
                 android:id="@+id/tv_tabBarComputer"
@@ -64,8 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="遥控电脑"
-                android:textSize="10dp"
-                />
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,7 +80,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/img_tabBarHistory"
@@ -81,8 +94,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:scaleType="centerInside"
-                android:src="@drawable/history_black"
-                />
+                android:src="@drawable/history_black" />
 
             <TextView
                 android:id="@+id/tv_tabBarHistory"
@@ -90,8 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="历史"
-                android:textSize="10dp"
-                />
+                android:textSize="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -99,7 +110,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/img_tabBarProfile"
@@ -107,8 +124,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:scaleType="centerInside"
-                android:src="@drawable/profile_black"
-                />
+                android:src="@drawable/profile_black" />
 
             <TextView
                 android:id="@+id/tv_tabBarProfile"
@@ -116,27 +132,21 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="我"
-                android:textSize="10dp"
-                />
+                android:textSize="10dp" />
         </LinearLayout>
-
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout_MainAct"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ll_tabBar_mainAct"
-        >
-
+        android:layout_above="@id/ll_tabBar_mainAct" >
     </FrameLayout>
 
-</RelativeLayout>
-
-    <!--Demo 设置图片按原图缩放-->
-    <!--<ImageView-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="30dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:src="@drawable/tabbar_profile1"-->
-    <!--/>-->
+</RelativeLayout> <!-- Demo 设置图片按原图缩放 -->
+<!-- <ImageView -->
+<!-- android:layout_width="0dp" -->
+<!-- android:layout_height="30dp" -->
+<!-- android:layout_weight="1" -->
+<!-- android:src="@drawable/tabbar_profile1" -->
+<!-- /> -->

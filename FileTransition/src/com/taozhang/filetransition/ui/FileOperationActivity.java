@@ -6,7 +6,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 
 import com.taozhang.filetransition.R;
 import com.taozhang.filetransition.runnable.SendMessageRunnable;
-import com.taozhang.filetransition.util.Connect;
 
 public class FileOperationActivity extends Activity {
 

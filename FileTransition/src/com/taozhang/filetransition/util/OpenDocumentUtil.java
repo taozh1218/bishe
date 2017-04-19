@@ -76,10 +76,15 @@ public class OpenDocumentUtil {
 						targetedShareIntents.remove(0), "Select app to Open");
 				chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
 						targetedShareIntents.toArray(new Parcelable[] {}));
+				chooserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				context.startActivity(chooserIntent);
 			} else {
 				Toast.makeText(context, "没有可选程序", Toast.LENGTH_SHORT).show();
 			}
+		} else {
+			System.out.println("resInfo.isEmpty()");
+			Toast.makeText(context, "resInfo.isEmpty()", Toast.LENGTH_SHORT)
+					.show();
 		}
 	}
 
@@ -95,7 +100,7 @@ public class OpenDocumentUtil {
 		}
 		String type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(
 				suffix);
-		if (type != null || !type.isEmpty()) {
+		if (type != null ) {
 			return type;
 		}
 		return "file/*";

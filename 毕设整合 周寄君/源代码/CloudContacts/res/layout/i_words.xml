@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="right"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/i_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0099cc"
+        android:gravity="right"
+        android:paddingBottom="15dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:paddingTop="15dip"
+        android:text="会会会会会会会会会会会会会会" />
+
+    <ImageView
+        android:id="@+id/i_avatar"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_launcher" />
+
+</LinearLayout>

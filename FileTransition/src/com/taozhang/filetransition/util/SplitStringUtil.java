@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import com.taozhang.filetransition.R;
+
 /**
  * 
  * @Description:
  * 
  * @author taozhang
  * @created 2016年5月29日 下午8:21:18
- *
+ * 
  */
 public class SplitStringUtil {
 
@@ -46,7 +48,7 @@ public class SplitStringUtil {
 		String temp = string;
 		int indexOf = temp.indexOf(regular);// 获取第一个匹配的index
 		if (indexOf == -1) {
-			System.out.println("未找到匹配的！");
+			// System.out.println("未找到匹配的！");
 			return null;
 		}
 		// 第一次从0开始截取，之后从该位置+1开始截取
@@ -58,13 +60,44 @@ public class SplitStringUtil {
 			list.add(substring);
 			temp = temp.substring(indexOf + 1);// 去除temp的第一段
 			indexOf = temp.indexOf(regular);// 再次获取第一个匹配的index
-			substring = temp.substring(0);//1.必须+1才能正常截取，2.可以避免是-1
+			substring = temp.substring(0);// 1.必须+1才能正常截取，2.可以避免是-1
 			System.out.println(substring);
 		}
 		System.err.println("temp:" + temp + ",subString:" + substring
 				+ ",index:" + indexOf);
 		list.add(temp);
 		return list;
+	}
+
+	public static String getTypeBySplit(String fileName) {
+		String[] split = fileName.split("\\.");
+		String type = split[split.length - 1];
+		return type;
+	}
+
+	public static String getFilePathByType(String type) {
+		String path;
+		if (type.equals("apk")) {// apk
+			path = Constant.BASEPATH_APK;
+		} else if (type.equals("mp3")) {// 音乐
+			path = Constant.BASEPATH_MUSIC;
+		} else if (type.equals("png") || type.equals("jpg")
+				|| type.equals("jpeg") || type.equals("gif")
+				|| type.equals("bmp") || type.equals("wbmp")) {// 图片
+			path = Constant.BASEPATH_PIC;
+		} else if (type.equals("mp4") || type.equals("wmv")
+				|| type.equals("mpeg") || type.equals("3gp")
+				|| type.equals("3gpp") || type.equals("asf")) {// 视频
+			path = Constant.BASEPATH_VIDEO;
+		} else if (type.equals("docx") || type.equals("xlsx")
+				|| type.equals("pptx") || type.equals("accdb")
+				|| type.equals("doc") || type.equals("xls")
+				|| type.equals("ppt")) {// office
+			path = Constant.BASEPATH_OFFICE;
+		} else {// else
+			path = Constant.BASEPATH_ELSE;
+		}
+		return path;
 	}
 
 }
